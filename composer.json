@@ -1,0 +1,27 @@
+{
+  "name": "bennetgallein/omnipay-polar",
+  "description": "Polar.sh gateway for Omnipay",
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "omnipay/common": "^3.3",
+    "php": "^7|^8",
+    "symfony/event-dispatcher": "^7",
+    "php-http/guzzle7-adapter": "^1"
+  },
+  "require-dev": {
+    "omnipay/tests": "^4.0",
+    "php-coveralls/php-coveralls": "^2.0",
+    "http-interop/http-factory-guzzle": "^1.2"
+  },
+  "config": {
+    "allow-plugins": {
+      "php-http/discovery": true
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Omnipay\\Polar\\": "src/"
+    }
+  }
+}
