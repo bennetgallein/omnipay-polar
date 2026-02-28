@@ -5,6 +5,7 @@ namespace Omnipay\Polar\Message;
 use Omnipay\Common\Exception\InvalidRequestException;
 use Polar\Models\Components\CheckoutCreate;
 use Polar\Models\Components\PresentmentCurrency;
+use Polar\Models\Components\ProductPriceFixedCreate;
 
 class PurchaseRequest extends AbstractRequest
 {
@@ -12,14 +13,20 @@ class PurchaseRequest extends AbstractRequest
     {
         $this->validate('amount', 'productId');
 
-        $params = [
-            'products' => [$this->getProductId()],
-            'amount' => $this->getAmountInteger(),
-        ];
+        $productId = $this->getProductId();
+        $currency = $this->getCurrency()
+            ? PresentmentCurrency::from(strtolower($this->getCurrency()))
+            : null;
 
-        if ($this->getCurrency()) {
-            $params['currency'] = PresentmentCurrency::from(strtolower($this->getCurrency()));
-        }
+        $price = new ProductPriceFixedCreate(
+            priceAmount: $this->getAmountInteger(),
+            priceCurrency: $currency,
+        );
+
+        $params = [
+            'products' => [$productId],
+            'prices' => [$productId => [$price]],
+        ];
 
         if ($this->getReturnUrl()) {
             $params['successUrl'] = $this->getReturnUrl();
