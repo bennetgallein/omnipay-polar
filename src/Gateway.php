@@ -16,6 +16,7 @@ class Gateway extends AbstractGateway
         return [
             'apiKey' => '',
             'sandbox' => false,
+            'webhookSecret' => '',
         ];
     }
 
@@ -37,6 +38,16 @@ class Gateway extends AbstractGateway
     public function setSandbox($value)
     {
         return $this->setParameter('sandbox', $value);
+    }
+
+    public function getWebhookSecret()
+    {
+        return $this->getParameter('webhookSecret');
+    }
+
+    public function setWebhookSecret($value)
+    {
+        return $this->setParameter('webhookSecret', $value);
     }
 
     public function purchase(array $parameters = [])

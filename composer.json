@@ -7,7 +7,8 @@
     "omnipay/common": "^3.3",
     "php": "^7|^8",
     "symfony/event-dispatcher": "^7",
-    "php-http/guzzle7-adapter": "^1"
+    "php-http/guzzle7-adapter": "^1",
+    "polar-sh/sdk": "^0.8.0"
   },
   "require-dev": {
     "omnipay/tests": "^4.0",
