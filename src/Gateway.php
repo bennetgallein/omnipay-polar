@@ -59,4 +59,9 @@ class Gateway extends AbstractGateway
     {
         return $this->createRequest('\Omnipay\Polar\Message\CompletePurchaseRequest', $parameters);
     }
+
+    public function fetchTransaction(array $parameters = [])
+    {
+        return $this->createRequest('\Omnipay\Polar\Message\FetchCheckoutRequest', $parameters);
+    }
 }
