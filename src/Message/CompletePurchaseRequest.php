@@ -13,7 +13,7 @@ class CompletePurchaseRequest extends AbstractRequest
             throw new InvalidRequestException('The webhookSecret parameter is required');
         }
 
-        $body = $this->httpRequest->getContent();
+        $body = file_get_contents('php://input');
         $webhookId = $this->httpRequest->headers->get('webhook-id');
         $timestamp = $this->httpRequest->headers->get('webhook-timestamp');
         $signature = $this->httpRequest->headers->get('webhook-signature');
