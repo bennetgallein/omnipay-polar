@@ -53,6 +53,8 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
         if ($this->getSandbox()) {
             $builder->setServer(Polar::SERVER_SANDBOX);
+        } else {
+            $builder->setServer(Polar::SERVER_PRODUCTION);
         }
 
         return $builder->build();

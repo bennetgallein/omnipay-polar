@@ -15,7 +15,7 @@ class Gateway extends AbstractGateway
     {
         return [
             'apiKey' => '',
-            'sandbox' => false,
+            'sandbox' => true,
             'webhookSecret' => '',
         ];
     }
